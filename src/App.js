@@ -15,7 +15,6 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <FixedSidebar/>
-            <h1>Hello world</h1>
           </Route>
         </Switch>
       </Router>
