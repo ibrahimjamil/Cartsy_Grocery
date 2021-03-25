@@ -5,7 +5,7 @@ import { Grid, Hidden } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root_web:{
-    width:"77vw",
+    width:"76vw",
     height:"380px",
     backgroundColor:"white",
     backgroundImage:`url(https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2021/02/14092249/Grocery.png)`,
