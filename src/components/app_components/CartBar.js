@@ -49,27 +49,27 @@ function CartBar() {
     return (
     <div>
         <div className={classes.item}>
-        <div style={{flex:"0.2"}}>
-            <img src={logo} style={{width:"105px",height:"130px"}}/>
-        </div>
-        <div style={{flex:"0.8",paddingRight:"16px",paddingLeft:"16px",display:"flex",flexDirection:"column"}}>
-            <div>
-                <p>Organic white mashroom</p>
-            </div>
-            <div>
-                <p>Unit Price $20 </p>
-            </div>
-            <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
-                <div className={classes.IDD}>
-                    <div className={classes.IDDINNER} style={{cursor:"pointer"}}>-</div>
-                    <div className={classes.IDDINNER}>0</div>
-                    <div className={classes.IDDINNER} style={{cursor:"pointer"}}>+</div>
-                </div>
-                <div>
-                    <p>$15.36</p>
-                </div>
-            </div>
-        </div>
+          <div style={{flex:"0.2"}}>
+              <img src={logo} style={{width:"105px",height:"130px"}}/>
+          </div>
+          <div style={{flex:"0.8",paddingRight:"16px",paddingLeft:"16px",display:"flex",flexDirection:"column"}}>
+              <div>
+                  <p>Organic white mashroom</p>
+              </div>
+              <div>
+                  <p>Unit Price $20 </p>
+              </div>
+              <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
+                  <div className={classes.IDD}>
+                      <div className={classes.IDDINNER} style={{cursor:"pointer"}}>-</div>
+                      <div className={classes.IDDINNER}>0</div>
+                      <div className={classes.IDDINNER} style={{cursor:"pointer"}}>+</div>
+                  </div>
+                  <div>
+                      <p>$15.36</p>
+                  </div>
+              </div>
+          </div>
         </div>
     </div>
     )

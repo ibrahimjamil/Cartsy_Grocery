@@ -191,10 +191,10 @@ export default function Navbar() {
         <div className={classes.cart}>
           <div className={classes.cart_upper}>
             {data.map(()=>(
-              <>
+              <div>
                 <CartBar/>
                 <Divider/>
-              </>
+              </div>
             ))}
           </div>
           <div  className={classes.checkO}>

@@ -50,7 +50,7 @@ function FixesSidebar() {
             <div className={classes.sidebar_container}>
                 <List className={classes.sideBar}>
                     {["Shop", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts"].map((text, index) => (
-                        <>
+                        <div>
                             <ListItem >
                                     <ListItemText  onClick={()=>handleClick(index)} primary={text} style={{cursor:"pointer",display:"flex",justifyContent:"flex-start"}}/>
                                     {index===selectedIndex ? <ExpandMore /> : <ExpandLess />}
@@ -66,7 +66,7 @@ function FixesSidebar() {
                                     </ListItem>
                                 </List>
                             </Collapse>
-                        </>
+                        </div>
                     ))}
                 </List>        
             </div>
