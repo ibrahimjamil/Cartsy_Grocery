@@ -5,7 +5,7 @@ import { Grid, Hidden } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root_web:{
-    width:"77vw",
+    width:"70vw",
     height:"380px",
     backgroundColor:"white",
     backgroundImage:`url(https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2021/02/14092249/Grocery.png)`,
@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundPositionY:"center",
     backgroundRepeat:"no-repeat",
     borderRadius:"6px",
-    marginTop:"100px",
-    marginLeft:"23vw",
+    marginTop:"105px",
+    marginLeft:"27vw",
   },
   root_mobile:{
     width:"100vw",
