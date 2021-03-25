@@ -26,9 +26,10 @@ const useStyles = makeStyles((theme) => ({
         height:"100vh",
         width:"23vw",
         overflow:"scroll",
+        position:'fixed',
     },
     sideBar:{
-        marginTop:"100px"
+        marginTop:"100px",
     },
     nested: {
         paddingLeft: theme.spacing(4),
