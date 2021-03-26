@@ -52,7 +52,7 @@ function FixesSidebar() {
                 <List className={classes.sideBar}>
                     {["Shop", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts"].map((text, index) => (
                         <div>
-                            <ListItem >
+                            <ListItem>
                                     <ListItemText  onClick={()=>handleClick(index)} primary={text} style={{cursor:"pointer",display:"flex",justifyContent:"flex-start"}}/>
                                     {index===selectedIndex ? <ExpandMore /> : <ExpandLess />}
                             </ListItem>
