@@ -27,8 +27,6 @@ const useStyles = makeStyles((theme) => ({
         width:"23vw",
         overflow:"scroll",
         position:'fixed',
-    },
-    sideBar:{
         marginTop:"100px",
     },
     nested: {
@@ -47,31 +45,31 @@ function FixesSidebar() {
         }
     }
     return (
-        <Hidden smDown implementation="css">
-            <div className={classes.sidebar_container}>
-                <List className={classes.sideBar}>
-                    {["Shop", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts"].map((text, index) => (
-                        <div>
-                            <ListItem >
-                                    <ListItemText  onClick={()=>handleClick(index)} primary={text} style={{cursor:"pointer",display:"flex",justifyContent:"flex-start"}}/>
-                                    {index===selectedIndex ? <ExpandMore /> : <ExpandLess />}
-                            </ListItem>
-                            <Collapse in={index===selectedIndex}>
-                                <List>
-                                    <ListItem button className={classes.nested}>
-                                        <ListItemText>
-                                        {text==="Shop" && ["Packaging"].map((item)=>(
-                                            <p>{item}</p>
-                                        ))}
-                                        </ListItemText>
-                                    </ListItem>
-                                </List>
-                            </Collapse>
-                        </div>
-                    ))}
-                </List>        
-            </div>
-        </Hidden>
+      <Hidden smDown implementation="css">
+          <div className={classes.sidebar_container}>
+            <List >
+              {["Shop", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts"].map((text, index) => (
+                <div>
+                  <ListItem>
+                    <ListItemText  onClick={()=>handleClick(index)} primary={text} style={{cursor:"pointer",display:"flex",justifyContent:"flex-start"}}/>
+                    {index===selectedIndex ? <ExpandMore /> : <ExpandLess />}
+                  </ListItem>
+                  <Collapse in={index===selectedIndex}>
+                    <List>
+                      <ListItem button className={classes.nested}>
+                        <ListItemText>
+                          {text==="Shop" && ["Packaging"].map((item)=>(
+                              <p>{item}</p>
+                          ))}
+                        </ListItemText>
+                      </ListItem>
+                    </List>
+                  </Collapse>
+                </div>
+              ))}
+            </List>        
+          </div>
+      </Hidden>
     )
 }
 
