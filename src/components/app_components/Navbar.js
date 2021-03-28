@@ -13,6 +13,7 @@ import ListItem from "@material-ui/core/ListItem";
 import Divider from '@material-ui/core/Divider';
 import ListItemText from "@material-ui/core/ListItemText";
 import CartBar from './CartBar';
+import {useDispatch,useSelector} from 'react-redux'
 let logo = "https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
 
 
@@ -112,22 +113,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
   const classes = useStyles();
-  const [data,setData]=useState(
-    [
-      {
-        price:"20"
-      },
-      {
-        price:"30"   
-      },
-      {
-        price:"40"
-      },
-      {
-        price:"40"
-      }
-    ]
-    )
+  const cartdata=useSelector(state=>state.cartReducer)
   //state
   const [state, setState] = useState({
     lbutton:false,
@@ -190,20 +176,20 @@ export default function Navbar() {
         <Divider/>
         <div className={classes.cart}>
           <div className={classes.cart_upper}>
-            {data.map(()=>(
+            {cartdata.map((object)=>(
               <div>
-                <CartBar/>
+                <CartBar img={object.img} price={object.price} description={object.description}/>
                 <Divider/>
               </div>
             ))}
           </div>
           <div  className={classes.checkO}>
-             <div style={{display:"flex",flex:"0.7",justifyContent:"center",alignItems:"center"}}>
-                <a>Proceed to checkout</a>
-             </div>
-             <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-                <p>$70.74</p>
-             </div>
+            <div style={{display:"flex",flex:"0.7",justifyContent:"center",alignItems:"center"}}>
+              <a>Proceed to checkout</a>
+            </div>
+            <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+              <p>$70.74</p>
+            </div>
           </div>
         </div>
     </div>

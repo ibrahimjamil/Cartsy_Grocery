@@ -43,21 +43,21 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function CartBar() {
+function CartBar({img,price,description}) {
     const classes = useStyles();
 
     return (
     <div>
         <div className={classes.item}>
           <div style={{flex:"0.2"}}>
-              <img src={logo} style={{width:"105px",height:"130px"}}/>
+              <img src={img} style={{width:"70px",height:"100px"}}/>
           </div>
           <div style={{flex:"0.8",paddingRight:"16px",paddingLeft:"16px",display:"flex",flexDirection:"column"}}>
               <div>
-                  <p>Organic white mashroom</p>
+                  <p>{description}</p>
               </div>
               <div>
-                  <p>Unit Price $20 </p>
+                  <p>Unit Price {price} </p>
               </div>
               <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
                   <div className={classes.IDD}>
@@ -66,7 +66,7 @@ function CartBar() {
                       <div className={classes.IDDINNER} style={{cursor:"pointer"}}>+</div>
                   </div>
                   <div>
-                      <p>$15.36</p>
+                      <p>{price}</p>
                   </div>
               </div>
           </div>

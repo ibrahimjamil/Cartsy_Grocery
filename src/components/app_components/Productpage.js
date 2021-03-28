@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 function Productpage() {
     const classes=useStyles()
-    const state = useSelector(state => state)
+    const state = useSelector(state => state.dataReducer)
     const dispatch=useDispatch()
     useEffect(()=>{
         dispatch({type:"getData"})
@@ -30,9 +30,9 @@ function Productpage() {
             <Hidden smDown>
                 <div className={classes.rootweb}>
                     <Grid container justify="space-around" spacing={2}>
-                        {state.map((object)=>(
+                        {state.map((object,index)=>(
                                 <Grid item  sm={3} lg={3} container justify="center">
-                                    <Products img={object.img} price={object.price} desc={object.description}/>
+                                    <Products ind={index} img={object.img} price={object.price} desc={object.description}/>
                                 </Grid>
                             ))
                         }
@@ -42,9 +42,9 @@ function Productpage() {
             <Hidden mdUp>
                 <div className={classes.rootMobile}>
                     <Grid container justify="space-between" spacing={2}>
-                        {state.map((object)=>(
+                        {state.map((object,index)=>(
                             <Grid item xs={6} container justify="center">
-                                <Products img={object.img} price={object.price} desc={object.description}/>
+                                <Products ind={index} img={object.img} price={object.price} desc={object.description}/>
                             </Grid>
                             ))
                         }

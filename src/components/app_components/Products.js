@@ -1,6 +1,8 @@
 import React from 'react'
 import {  makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
+import Navbar from './Navbar';
+import {useSelector,useDispatch} from 'react-redux'
 
 let logo= "https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/09210135/canned-food1-3.jpg"
 
@@ -64,20 +66,33 @@ const useStyles = makeStyles((theme) => ({
 }))
 function Products(props) {
   const classes=useStyles()
+  const dispatch=useDispatch()
+  const cartReducer=()=>{
+    dispatch(
+        {
+          type:"cartAdd",
+          data:{
+            img:props.img,
+            price:props.price,
+            description:props.desc
+          }
+        }
+      )
+  }
   return (
-    <div className={classes.rootest}>
+    <div className={classes.rootest} >
       <Grid container className={classes.root}>
         <Grid item>
           <img src={props.img} style={{width:"100%",height:"50%",transform: "scale(0.9)"}}/>
         </Grid>
-        <Grid item conatiner className={classes.root1} >
+        <Grid item conatiner className={classes.root1}>
           <Grid item>
             <p style={{fontSize:"16px",marginBottom:"5px"}}>{props.price}</p>
           </Grid>
           <Grid item>
-            <p style={{fontSize:"16px",color:"grey",marginBottom:"25px"}}>{props.desc}</p>
+            <p style={{fontSize:"16px",color:"grey",marginBottom:"25px",overflow:"hidden"}}>{props.desc}</p>
           </Grid>
-          <div className={classes.btnroot} >
+          <div className={classes.btnroot} onClick={()=>cartReducer()}>
             <div className={classes.btn1}>add </div>
             <div className={classes.btn2}>+</div>
           </div>

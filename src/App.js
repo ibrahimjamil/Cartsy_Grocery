@@ -7,12 +7,11 @@ import {createStore,applyMiddleware} from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from './components/Redux/Saga/Saga.js'
 import {Provider} from 'react-redux'
-import reducer from './components/Redux/Reducer/Reducer'
 import { composeWithDevTools } from 'redux-devtools-extension';
-
+import combineReducer from './components/Redux/Combinereducer/CombineReducer.js'
 
 const sagamiddlware=createSagaMiddleware()
-const store=createStore(reducer,composeWithDevTools(applyMiddleware(sagamiddlware)))
+const store=createStore(combineReducer,composeWithDevTools(applyMiddleware(sagamiddlware)))
 sagamiddlware.run(rootSaga)
 
 function App() {
@@ -37,5 +36,6 @@ function App() {
     </Provider>
   );
 }
+
 
 export default App;

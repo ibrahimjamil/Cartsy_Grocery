@@ -4,7 +4,7 @@ import { Grid, Hidden } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root:{
-    width:"77vw",
+    width:"76vw",
     height:"388px",
     backgroundColor:"whitesmoke",
     marginLeft:"23vw",
