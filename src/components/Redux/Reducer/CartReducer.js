@@ -2,7 +2,7 @@ const initialState=[
   {
     img:'',
     price:'',
-    description:''
+    description:'',
   }
 ]
 
@@ -19,7 +19,7 @@ const cartreducer = (state=initialState,action)=>{
         }
       ]
       default:
-        return state.splice(0,1)
+        return state
   }
 }
 

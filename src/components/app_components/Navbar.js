@@ -177,8 +177,13 @@ export default function Navbar() {
           <div className={classes.cart_upper}>
             {cartdata.map((object)=>(
               <div>
-                <CartBar img={object.img} price={object.price} description={object.description}/>
-                <Divider/>
+                {object.img && object.price && object.description?
+                  <div>
+                    <CartBar img={object.img} price={object.price} description={object.description}/>
+                    <Divider/>
+                  </div>:
+                  ''
+                }
               </div>
             ))}
           </div>
