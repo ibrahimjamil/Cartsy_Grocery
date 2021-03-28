@@ -114,7 +114,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
   const classes = useStyles();
   const cartdata=useSelector(state=>state.cartReducer)
-  //state
   const [state, setState] = useState({
     lbutton:false,
     rbutton:false
