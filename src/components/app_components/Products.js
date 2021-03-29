@@ -99,7 +99,7 @@ function Products(props) {
         </Grid>
         <Grid item conatiner className={classes.root1}>
           <Grid item>
-            <p style={{fontSize:"16px",marginBottom:"5px"}}>{props.price}</p>
+            <p style={{fontSize:"16px",marginBottom:"5px"}}>${props.price}</p>
           </Grid>
           <Grid item>
             <p style={{fontSize:"16px",color:"grey",marginBottom:"25px",overflow:"hidden"}}>{props.desc}</p>

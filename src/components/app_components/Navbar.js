@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {  makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -6,14 +6,14 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
-import MailIcon from '@material-ui/icons/Mail';
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Divider from '@material-ui/core/Divider';
 import ListItemText from "@material-ui/core/ListItemText";
 import CartBar from './CartBar';
-import {useDispatch,useSelector} from 'react-redux'
+import {useSelector,useDispatch} from 'react-redux'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 let logo = "https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
 
 
@@ -115,6 +115,9 @@ export default function Navbar() {
   let totalAmount=0
   const classes = useStyles();
   const cartdata=useSelector(state=>state.cartReducer)
+  const dispatch=useDispatch()
+
+  
   cartdata.map((object)=>{
     if (object.img&&object.price&&object.description&&object.quantity){
         totalAmount=totalAmount + (object.price*object.quantity)
@@ -183,7 +186,7 @@ export default function Navbar() {
           <div className={classes.cart_upper}>
             {cartdata.map((object,index)=>(
               <div>
-                {object.img && object.price && object.description?
+                {object.img && object.price && object.description && object.quantity>=1?
                   <div>
                     <CartBar index={index} quan={object.quantity} img={object.img} price={object.price} description={object.description}/>
                     <Divider/>
@@ -204,6 +207,7 @@ export default function Navbar() {
         </div>
     </div>
   );
+  
   return (
     <div className={classes.grow}>
       <AppBar  position="static" className={classes.root}>
@@ -220,7 +224,7 @@ export default function Navbar() {
                 <Typography className={classes.type} >My Account</Typography>
                 <IconButton onClick={toggleDrawer("rbutton",true)}>
                     <Badge badgeContent={cartdata.length-1} color="secondary" bg="black">
-                        <MailIcon />
+                        <ShoppingCartIcon/>
                     </Badge>
                 </IconButton>
                 <SwipeableDrawer anchor={"right"} open={state.rbutton}>

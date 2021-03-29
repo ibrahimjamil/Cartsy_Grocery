@@ -10,6 +10,7 @@ const initialState=[
 
 const cartreducer = (state=initialState,action)=>{
   switch(action.type){
+
     case "ADD_TO_CART":
       return [
         ...state,
@@ -20,6 +21,7 @@ const cartreducer = (state=initialState,action)=>{
           quantity:1
         }
       ]
+
     case "increment_quan":
       let copystate=[...state]
       copystate.map((object,index)=>{
@@ -28,14 +30,23 @@ const cartreducer = (state=initialState,action)=>{
         }
       })
       return copystate
+
     case "decrement_quan":
       let copystate2=[...state]
-      copystate2.map((object,index)=>{
-        if (index===action.payload){
-          object.quantity=object.quantity-1
-        }
-      })
+      if (action.payload.quantity===1){
+        copystate2= [
+          ...state.slice(0,action.payload.index),
+          ...state.slice(action.payload.index+1,state.length)
+        ]
+      }else{
+        copystate2.map((object)=>{
+          if (object.img && object.price && object.description && object.quantity>1){
+            object.quantity=object.quantity-1
+          }
+        })
+      }
       return copystate2
+  
       default:
         return state
   }

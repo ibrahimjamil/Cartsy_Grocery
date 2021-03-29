@@ -26,9 +26,9 @@ function* cartQuantityI(){
   yield takeEvery("increment_quantity",incrementQ)
 }
 
-function* decrementQ({index}){
+function* decrementQ({data}){
   let incAction=cartDecrement()
-  yield put({type:incAction.type,payload:index})
+  yield put({type:incAction.type,payload:data})
 }
 function* cartQuantityD(){
   yield takeEvery("decrement_quantity",decrementQ)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {  makeStyles } from '@material-ui/core/styles';
 import {useSelector,useDispatch} from 'react-redux'
 let logo = "https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
@@ -46,11 +46,13 @@ const useStyles = makeStyles((theme) => ({
 function CartBar({img,price,description,index,quan}) {
     const classes = useStyles();
     const dispatch=useDispatch()
+
+    
     const incQ=()=>{
         dispatch({type:'increment_quantity',index:index})
     }
     const decQ=()=>{
-        dispatch({type:'decrement_quantity',index:index})
+        dispatch({type:'decrement_quantity',data:{index:index,quantity:quan}})
     }
     return (
     <div>
