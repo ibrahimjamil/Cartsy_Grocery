@@ -1,6 +1,6 @@
 import React from 'react'
 import {  makeStyles } from '@material-ui/core/styles';
-
+import {useSelector,useDispatch} from 'react-redux'
 let logo = "https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
 
 const useStyles = makeStyles((theme) => ({
@@ -43,9 +43,15 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function CartBar({img,price,description}) {
+function CartBar({img,price,description,index,quan}) {
     const classes = useStyles();
-
+    const dispatch=useDispatch()
+    const incQ=()=>{
+        dispatch({type:'increment_quantity',index:index})
+    }
+    const decQ=()=>{
+        dispatch({type:'decrement_quantity',index:index})
+    }
     return (
     <div>
         <div className={classes.item}>
@@ -57,16 +63,16 @@ function CartBar({img,price,description}) {
                   <p>{description}</p>
               </div>
               <div>
-                  <p>Unit Price {price} </p>
+                  <p>Unit Price ${price} </p>
               </div>
               <div style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
                   <div className={classes.IDD}>
-                      <div className={classes.IDDINNER} style={{cursor:"pointer"}}>-</div>
-                      <div className={classes.IDDINNER}>0</div>
-                      <div className={classes.IDDINNER} style={{cursor:"pointer"}}>+</div>
+                      <div className={classes.IDDINNER} style={{cursor:"pointer"}} onClick={()=>decQ()}>-</div>
+                      <div className={classes.IDDINNER}>{quan}</div>
+                      <div className={classes.IDDINNER} style={{cursor:"pointer"}} onClick={()=>incQ()}>+</div>
                   </div>
                   <div>
-                      <p>{price}</p>
+                      <p>${(price*quan).toFixed(1)}</p>
                   </div>
               </div>
           </div>

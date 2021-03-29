@@ -66,21 +66,33 @@ const useStyles = makeStyles((theme) => ({
 }))
 function Products(props) {
   const classes=useStyles()
+  const cartdata=useSelector(state => state.cartReducer)
   const dispatch=useDispatch()
+
+
   const cartReducer=()=>{
-    dispatch(
+    let toShow=true
+    cartdata.map((object)=>{
+      if (object.img===props.img){  
+        toShow=false
+      }
+    })
+    if (toShow){
+      dispatch(
         {
           type:"cartAdd",
           data:{
             img:props.img,
             price:props.price,
-            description:props.desc
+            description:props.desc,
+            quantity:1
           }
         }
       )
+    }
   }
   return (
-    <div className={classes.rootest} >
+    <div className={classes.rootest}>
       <Grid container className={classes.root}>
         <Grid item>
           <img src={props.img} style={{width:"100%",height:"50%",transform: "scale(0.9)"}}/>

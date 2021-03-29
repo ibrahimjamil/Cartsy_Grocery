@@ -112,8 +112,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Navbar() {
+  let totalAmount=0
   const classes = useStyles();
   const cartdata=useSelector(state=>state.cartReducer)
+  cartdata.map((object)=>{
+    if (object.img&&object.price&&object.description&&object.quantity){
+        totalAmount=totalAmount + (object.price*object.quantity)
+    }
+  })
   const [state, setState] = useState({
     lbutton:false,
     rbutton:false
@@ -175,11 +181,11 @@ export default function Navbar() {
         <Divider/>
         <div className={classes.cart}>
           <div className={classes.cart_upper}>
-            {cartdata.map((object)=>(
+            {cartdata.map((object,index)=>(
               <div>
                 {object.img && object.price && object.description?
                   <div>
-                    <CartBar img={object.img} price={object.price} description={object.description}/>
+                    <CartBar index={index} quan={object.quantity} img={object.img} price={object.price} description={object.description}/>
                     <Divider/>
                   </div>:
                   ''
@@ -192,7 +198,7 @@ export default function Navbar() {
               <a>Proceed to checkout</a>
             </div>
             <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-              <p>$70.74</p>
+              <p>${totalAmount.toFixed(1)}</p>
             </div>
           </div>
         </div>
@@ -213,7 +219,7 @@ export default function Navbar() {
             <div className={classes.lastdiv}>
                 <Typography className={classes.type} >My Account</Typography>
                 <IconButton onClick={toggleDrawer("rbutton",true)}>
-                    <Badge badgeContent={4} color="secondary" bg="black">
+                    <Badge badgeContent={cartdata.length-1} color="secondary" bg="black">
                         <MailIcon />
                     </Badge>
                 </IconButton>
