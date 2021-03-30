@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from 'react'
+import {Link} from "react-router-dom";
 import {  makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,6 +15,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import CartBar from './CartBar';
 import {useSelector,useDispatch} from 'react-redux'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { Grid, Hidden} from '@material-ui/core';
+
 let logo = "https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
 
 
@@ -43,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: "0px 1px 1px 1px rgb(0 0 0 / 2%), 0px 2px 2px 0px rgb(0 0 0 / 5%), 0px 1px 10px 0px rgb(0 0 0 / 12%)",
       position:"fixed"
     },
+  rootest:{
+    height:"14.2vh"
+  },
   root_inner:{
     marginBlock: "auto",
     paddingLeft: "0px",
@@ -210,29 +216,33 @@ export default function Navbar() {
   
   return (
     <div className={classes.grow}>
-      <AppBar  position="static" className={classes.root}>
-        <Toolbar className={classes.root_inner}>
-            <IconButton className={classes.menuButton} onClick={toggleDrawer("lbutton",true)}>
-              <MenuIcon/>
-            </IconButton>
-            <SwipeableDrawer anchor={"left"} open={state.lbutton}>
-              {list()}
-            </SwipeableDrawer> 
-            <img src={logo} className={classes.logo}/>
-            <div className={classes.grow}/>
-            <div className={classes.lastdiv}>
-                <Typography className={classes.type} >My Account</Typography>
-                <IconButton onClick={toggleDrawer("rbutton",true)}>
-                    <Badge badgeContent={cartdata.length-1} color="secondary" bg="black">
-                        <ShoppingCartIcon/>
-                    </Badge>
-                </IconButton>
-                <SwipeableDrawer anchor={"right"} open={state.rbutton}>
-                  {cart()}
-                </SwipeableDrawer> 
-            </div>
-        </Toolbar>
-      </AppBar>
+      <Grid container className={classes.rootest}>
+        <AppBar  position="static" className={classes.root}>
+          <Toolbar className={classes.root_inner}>
+              <IconButton className={classes.menuButton} onClick={toggleDrawer("lbutton",true)}>
+                  <MenuIcon/>
+              </IconButton>
+              <SwipeableDrawer anchor={"left"} open={state.lbutton}>
+                {list()}
+              </SwipeableDrawer> 
+              <Link to="/">
+                <img src={logo} className={classes.logo}/>
+              </Link>
+              <div className={classes.grow}/>
+              <div className={classes.lastdiv}>
+                  <Typography className={classes.type} >My Account</Typography>
+                  <IconButton onClick={toggleDrawer("rbutton",true)}>
+                      <Badge badgeContent={cartdata.length-1} color="secondary" bg="black">
+                          <ShoppingCartIcon/>
+                      </Badge>
+                  </IconButton>
+                  <SwipeableDrawer anchor={"right"} open={state.rbutton}>
+                    {cart()}
+                  </SwipeableDrawer> 
+              </div>
+          </Toolbar>
+        </AppBar>
+      </Grid>
     </div>
   )
 }

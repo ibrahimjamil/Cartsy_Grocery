@@ -6,7 +6,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import Collapse from '@material-ui/core/Collapse';
-import { Hidden } from '@material-ui/core';
+import { Hidden, ListItemIcon } from '@material-ui/core';
+import { Grid} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     //custom scroll bar 
@@ -25,9 +26,9 @@ const useStyles = makeStyles((theme) => ({
     sidebar_container:{ 
         height:"100vh",
         width:"23vw",
-        overflow:"scroll",
+        overflowY:"scroll",
         position:'fixed',
-        marginTop:"100px",
+        marginTop:"15px",
     },
     nested: {
         paddingLeft: theme.spacing(4),
@@ -46,9 +47,9 @@ function FixesSidebar() {
     }
     return (
       <Hidden smDown implementation="css">
-          <div className={classes.sidebar_container}>
+          <div  className={classes.sidebar_container}>
             <List >
-              {["Shop", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts", "Blogs", "FAQs", "Drafts","Terms and Conditions","Contacts"].map((text, index) => (
+              {["Fresh Vegetables", "Fresh Fruits", "Dairy & Eggs", "Breakfast"].map((text, index) => (
                 <div>
                   <ListItem>
                     <ListItemText  onClick={()=>handleClick(index)} primary={text} style={{cursor:"pointer",display:"flex",justifyContent:"flex-start"}}/>
@@ -58,7 +59,7 @@ function FixesSidebar() {
                     <List>
                       <ListItem button className={classes.nested}>
                         <ListItemText>
-                          {text==="Shop" && ["Packaging"].map((item)=>(
+                          {text==="Fresh Vegetables" && ["Packaging"].map((item)=>(
                               <p>{item}</p>
                           ))}
                         </ListItemText>

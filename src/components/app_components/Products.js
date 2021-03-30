@@ -1,10 +1,10 @@
 import React from 'react'
 import {  makeStyles } from '@material-ui/core/styles';
+import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
 import { Grid } from '@material-ui/core';
 import Navbar from './Navbar';
 import {useSelector,useDispatch} from 'react-redux'
 
-let logo= "https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/09210135/canned-food1-3.jpg"
 
 const useStyles = makeStyles((theme) => ({
   rootest:{
@@ -62,6 +62,10 @@ const useStyles = makeStyles((theme) => ({
       color:"white",
       backgroundColor:"#000000c4"
     }
+  },
+  color:{
+    color: 'black',
+    textDecoration: 'unset'
   }
 }))
 function Products(props) {
@@ -92,25 +96,27 @@ function Products(props) {
     }
   }
   return (
-    <div className={classes.rootest}>
-      <Grid container className={classes.root}>
-        <Grid item>
-          <img src={props.img} style={{width:"100%",height:"50%",transform: "scale(0.9)"}}/>
-        </Grid>
-        <Grid item conatiner className={classes.root1}>
+    <Link to="/products" className={classes.color}>
+      <div className={classes.rootest}>
+        <Grid container className={classes.root}>
           <Grid item>
-            <p style={{fontSize:"16px",marginBottom:"5px"}}>${props.price}</p>
+            <img src={props.img} style={{width:"100%",height:"50%",transform: "scale(0.9)"}}/>
           </Grid>
-          <Grid item>
-            <p style={{fontSize:"16px",color:"grey",marginBottom:"25px",overflow:"hidden"}}>{props.desc}</p>
+          <Grid item conatiner className={classes.root1}>
+            <Grid item>
+              <p style={{fontSize:"16px",marginBottom:"5px"}}>${props.price}</p>
+            </Grid>
+            <Grid item>
+              <p style={{fontSize:"16px",color:"grey",marginBottom:"25px",overflow:"hidden"}}>{props.desc}</p>
+            </Grid>
+            <div className={classes.btnroot} onClick={()=>cartReducer()}>
+              <div className={classes.btn1}>add </div>
+              <div className={classes.btn2}>+</div>
+            </div>
           </Grid>
-          <div className={classes.btnroot} onClick={()=>cartReducer()}>
-            <div className={classes.btn1}>add </div>
-            <div className={classes.btn2}>+</div>
-          </div>
         </Grid>
-      </Grid>
-    </div>
+      </div>
+    </Link>
   )
 }
 
