@@ -14,6 +14,14 @@ const useStyle=makeStyles((theme)=>({
         marginTop:"1.7vh",
         paddingBottom:"40px",
     },
+    imageroot:{
+        [theme.breakpoints.down('sm')]: {
+            display:"flex",
+            justifyContent:"center",
+            width:"50vw",
+            transform: "scale(1)"
+          },
+    },
     image:{
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed",
@@ -21,7 +29,8 @@ const useStyle=makeStyles((theme)=>({
         width:"50vw",
         maxHeight:"100%",
         [theme.breakpoints.down('sm')]: {
-            width:"100vw"
+            width:"50vw",
+            transform: "scale(1)"
           },
     },
     btn:{
@@ -63,14 +72,13 @@ const useStyle=makeStyles((theme)=>({
         transition: ".25s ease-in-out",
     },
     info:{
-        marginTop:"84px",
         paddingLeft:"80px",
         paddingRight:"80px",
     },
     infoinner1:{
-        maxWidth:"70%",
-        fontSize:"24px",
-        color:"black",
+        maxWidth:"80%",
+        fontSize:"28px",
+        color:"#212121",
         lineHeight:"1.5",
         fontWeight:"500"
     },
@@ -81,7 +89,11 @@ const useStyle=makeStyles((theme)=>({
     infoinner3:{
         maxWidth:"70%",
         fontSize:"16px",
-        color:"SASASA"
+        color:"#SASASA",
+        [theme.breakpoints.down('sm')]: {
+            width:"82vw",
+            transform: "scale(1)"
+          },
     },
     userinfo:{
         paddingLeft:"80px",
@@ -104,13 +116,21 @@ const useStyle=makeStyles((theme)=>({
     },
     custom: {
         color: 'black',
-        borderBottom:"2px solid black",
+        borderBottom:"3px solid #212121",
         fontSize:"20px"
     },
     custom2:{
         color:"#212121",
         borderBottom:"0px",
         
+    },
+    para:{
+        fontSize:"16px",
+        color:"#5A5A5A",
+        [theme.breakpoints.down('sm')]: {
+            width:"82vw",
+            transform: "scale(1)"
+          },
     }
 }))
 
@@ -137,7 +157,7 @@ function SpecificProduct() {
         <div>
             <Grid container direction="column">
                 <Grid container className={classes.root} direction="row">
-                    <Grid item sm={12} md={6}>
+                    <Grid item sm={12} md={6} className={classes.imageroot}>
                             <img src={image} className={classes.image}/>
                     </Grid>
                     <Grid item className={classes.info} container  sm={12} md={6}  direction="column">
@@ -148,17 +168,17 @@ function SpecificProduct() {
                             <p style={{fontSize:"20px",fontWeight:"500"}}>$2.70</p>
                         </Grid>
                         <Grid item className={classes.infoinner3}>
-                            <p>Bread is a staple food prepared from a dough of flour and water, usually by baking. Throughout recorded history it has been a prominent food in large parts of the world</p>
+                            <p className={classes.para}>Bread is a staple food prepared from a dough of flour and water, usually by baking. Throughout recorded history it has been a prominent food in large parts of the world</p>
                         </Grid>
                         <Grid item className={classes.infoinner}>
                             <button style={{marginTop:"20px",marginBottom:"40px"}} className={classes.btn}>Add To Cart</button>
                         </Grid>
                         <Grid item container direction="column">
                             <Grid item>
-                                <p><span style={{color:"grey"}}>Category:</span> Breakfast</p>
+                                <p><span style={{color:"#5A5A5A"}}>Category:</span> Breakfast</p>
                             </Grid>
                             <Grid item>
-                                <p><span style={{color:"grey"}}>Tags:</span> Bakery Breakfast</p>
+                                <p><span style={{color:"#5A5A5A"}}>Tags:</span> Bakery Breakfast</p>
                             </Grid>
                         </Grid>                      
                     </Grid>
