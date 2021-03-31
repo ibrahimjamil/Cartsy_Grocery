@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPositionX:"center",
     backgroundPositionY:"center",
     backgroundRepeat:"no-repeat",
-    marginTop:"15px",
+    marginTop:"3px",
     borderRadius:"6px",
     transform: "scale(0.9)",
     display:"flex",
