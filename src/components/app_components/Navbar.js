@@ -82,7 +82,16 @@ const useStyles = makeStyles((theme) => ({
     width:"23vw"
   },
   rightDrawer:{
-    width:"30vw"
+    width:"30vw",
+      [theme.breakpoints.down('md')]: {
+        width:"35vw"
+      },
+      [theme.breakpoints.down('sm')]: {
+        width:"50vw"
+      },
+      [theme.breakpoints.down('xs')]: {
+        width:"90vw"
+      },
   },
   cart:{
     height:"90vh",

@@ -18,7 +18,7 @@ const useStyle=makeStyles((theme)=>({
         [theme.breakpoints.down('sm')]: {
             display:"flex",
             justifyContent:"center",
-            width:"50vw",
+            width:"100vw",
             transform: "scale(1)"
         },
     },
@@ -31,7 +31,6 @@ const useStyle=makeStyles((theme)=>({
         maxHeight:"100%",
         [theme.breakpoints.down('sm')]: {
             width:"50vw",
-            transform: "scale(1)"
         },
     },
     btn:{

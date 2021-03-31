@@ -20,25 +20,26 @@ function App() {
   return (
     <Provider store={store}>
       <div>
-        <Router>
-          <div style={{display: 'flex',flexDirection: 'column'}}>
-            <Navbar/>
-              <Switch>
-                  <Route path="/" exact>
-                    <div style={{display:"flex",flexDirection:"row"}}>
-                      <FixedSidebar/>
-                      <div style={{display:"flex",flexDirection:"column"}}>
-                        <Banner/>
-                        <Productpage/>
+          <Router>
+            <div style={{display: 'flex',flexDirection: 'column'}}>
+              <Navbar/>
+                <Switch>
+                    <Route path="/" exact>
+                      <div style={{display:"flex",flexDirection:"row"}}>
+                        <FixedSidebar/>
+                        <div style={{display:"flex",flexDirection:"column"}}>
+                          <Banner/>
+                          <Productpage/>
+                        </div>
                       </div>
-                    </div>
-                  </Route>
-                  <Route path="/products">
-                      <SpecificProduct/>
-                  </Route>
-              </Switch>
-          </div>
-        </Router>
+                    </Route>
+                    <Route path="/products">
+                        <SpecificProduct/>
+                    </Route>
+                </Switch>
+            </div>
+          </Router>
+          <Footer/>
       </div>
     </Provider>
   );
