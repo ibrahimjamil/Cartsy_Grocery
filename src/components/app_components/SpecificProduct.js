@@ -20,7 +20,7 @@ const useStyle=makeStyles((theme)=>({
             justifyContent:"center",
             width:"50vw",
             transform: "scale(1)"
-          },
+        },
     },
     image:{
         backgroundRepeat: "no-repeat",
@@ -32,7 +32,7 @@ const useStyle=makeStyles((theme)=>({
         [theme.breakpoints.down('sm')]: {
             width:"50vw",
             transform: "scale(1)"
-          },
+        },
     },
     btn:{
         padding:"10px",
@@ -94,12 +94,11 @@ const useStyle=makeStyles((theme)=>({
         [theme.breakpoints.down('sm')]: {
             width:"82vw",
             transform: "scale(1)"
-          },
+        },
     },
     userinfo:{
         paddingLeft:"80px",
         paddingRight:"80px",
-       
     },
     relatedItems:{
         marginTop:"30px",
@@ -131,7 +130,7 @@ const useStyle=makeStyles((theme)=>({
         [theme.breakpoints.down('sm')]: {
             width:"82vw",
             transform: "scale(1)"
-          },
+        },
     }
 }))
 
@@ -207,11 +206,11 @@ function SpecificProduct() {
                         <h2 style={{fontSize:"24px",fontWeight:"500"}}>You may also like...</h2>
                     </Grid>
                     <Grid item container justify="space-around" spacing={2}>
-                       {state.slice(0,4).map((object,index)=>(
-                           <Grid item sm={6} md={4} lg={3} container justify="center">
-                               <RelatedProduct  ind={index} img={object.img} price={object.price} desc={object.description}/>
-                           </Grid>
-                       ))}
+                    {state.slice(0,4).map((object,index)=>(
+                        <Grid item sm={6} md={4} lg={3} container justify="center">
+                            <RelatedProduct  ind={index} img={object.img} price={object.price} desc={object.description}/>
+                        </Grid>
+                    ))}
                     </Grid>
                 </Grid>
             </Grid>   
