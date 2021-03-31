@@ -26,6 +26,7 @@ const useStyle=makeStyles((theme)=>({
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed",
         backgroundPosition: "center",
+        transform:"scale(0.8)",
         width:"50vw",
         maxHeight:"100%",
         [theme.breakpoints.down('sm')]: {
