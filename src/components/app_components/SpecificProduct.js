@@ -26,10 +26,15 @@ const useStyle=makeStyles((theme)=>({
     },
     btn:{
         padding:"10px",
-        backgroundColor:"black",
+        backgroundColor:"#212121",
+        borderColor:"#212121",
         color:"white",
-        width:"20%",
-        cursor:"pointer"
+        paddingLeft:"28px",
+        paddingRight:"28px",
+        cursor:"pointer",
+        display:"flex",
+        borderRadius:"6px",
+        fontSize:"16px"
     },
     btn2:{
         marginRight:"10px",
@@ -62,9 +67,21 @@ const useStyle=makeStyles((theme)=>({
         paddingLeft:"80px",
         paddingRight:"80px",
     },
-    infoinner:{
+    infoinner1:{
         maxWidth:"70%",
-       
+        fontSize:"24px",
+        color:"black",
+        lineHeight:"1.5",
+        fontWeight:"500"
+    },
+    infoinner2:{
+        maxWidth:"70%",
+        fontSize:"20px"
+    },
+    infoinner3:{
+        maxWidth:"70%",
+        fontSize:"16px",
+        color:"SASASA"
     },
     userinfo:{
         paddingLeft:"80px",
@@ -75,14 +92,25 @@ const useStyle=makeStyles((theme)=>({
         marginTop:"30px",
         paddingLeft:"80px",
         paddingRight:"80px",
-        marginBottom:"50px"
+        marginBottom:"50px",
+        fontSize:"24px",
+        color:"#212121",
+        marginBottom:"24px"
     },
     ui:{
         display:"flex",
         justifyContent:"flex-start",
+        fontSize:"20px"
     },
     custom: {
         color: 'black',
+        borderBottom:"2px solid black",
+        fontSize:"20px"
+    },
+    custom2:{
+        color:"#212121",
+        borderBottom:"0px",
+        
     }
 }))
 
@@ -113,17 +141,17 @@ function SpecificProduct() {
                             <img src={image} className={classes.image}/>
                     </Grid>
                     <Grid item className={classes.info} container  sm={12} md={6}  direction="column">
-                        <Grid item className={classes.infoinner}>
-                            <h1>Oroweat Organic  Wheat Bread 27 oz</h1>
+                        <Grid item className={classes.infoinner1}>
+                            <p>Oroweat Organic  Wheat Bread 27 oz</p>
                         </Grid>
-                        <Grid item className={classes.infoinner}>
-                            <p>$2.70</p>
+                        <Grid item className={classes.infoinner2}>
+                            <p style={{fontSize:"20px",fontWeight:"500"}}>$2.70</p>
                         </Grid>
-                        <Grid item className={classes.infoinner}>
+                        <Grid item className={classes.infoinner3}>
                             <p>Bread is a staple food prepared from a dough of flour and water, usually by baking. Throughout recorded history it has been a prominent food in large parts of the world</p>
                         </Grid>
                         <Grid item className={classes.infoinner}>
-                            <button style={{marginTop:"20px",marginBottom:"40px"}} className={classes.btn}>ADD</button>
+                            <button style={{marginTop:"20px",marginBottom:"40px"}} className={classes.btn}>Add To Cart</button>
                         </Grid>
                         <Grid item container direction="column">
                             <Grid item>
@@ -144,18 +172,18 @@ function SpecificProduct() {
                                 
                                 showLabels
                         >
-                            <BottomNavigationAction   classes={{selected: classes.custom}} onClick={()=>showDescription()} label="Description"  />
-                            <BottomNavigationAction   classes={{selected: classes.custom}} onClick={()=>showReview()} label="Reviews"  />
+                            <BottomNavigationAction  classes={{selected: classes.custom,label:classes.custom2}} onClick={()=>showDescription()} label="Description"  />
+                            <BottomNavigationAction  classes={{selected: classes.custom,label:classes.custom2}} onClick={()=>showReview()} label="Reviews"  />
                         </BottomNavigation>
                     </Grid>
                     <Grid item sm={12}>
-                        {review && <p>its good</p>}
-                        {desc && <p>its descriptionits descriptionits descriptionits descriptionits descriptionits descriptionits descriptionits descriptionits descriptionits descriptionits descriptionits description</p>}
+                        {review && <p style={{fontSize:"16px",color:"grey"}}>its good</p>}
+                        {desc && <p style={{fontSize:"16px",color:"grey"}}>its descriptionits descriptionits descriptionits descriptionits descriptionits descriptionits descriptionits descriptionits descriptionits descriptionits descriptionits description</p>}
                     </Grid>
                 </Grid>
                 <Grid container className={classes.relatedItems} direction="column">
                     <Grid item>
-                        <h1>You may also like...</h1>
+                        <h2 style={{fontSize:"24px",fontWeight:"500"}}>You may also like...</h2>
                     </Grid>
                     <Grid item container justify="space-around" spacing={2}>
                        {state.slice(0,4).map((object,index)=>(

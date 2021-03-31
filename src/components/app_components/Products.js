@@ -96,12 +96,13 @@ function Products(props) {
     }
   }
   return (
-    <Link to="/products" className={classes.color}>
       <div className={classes.rootest}>
         <Grid container className={classes.root}>
-          <Grid item>
-            <img src={props.img} style={{width:"100%",height:"50%",transform: "scale(0.9)"}}/>
-          </Grid>
+          <Link to="/products" className={classes.color}>
+            <Grid item>
+              <img src={props.img} style={{width:"100%",height:"50%",transform: "scale(0.9)"}}/>
+            </Grid>
+          </Link>
           <Grid item conatiner className={classes.root1}>
             <Grid item>
               <p style={{fontSize:"16px",marginBottom:"5px"}}>${props.price}</p>
@@ -116,7 +117,6 @@ function Products(props) {
           </Grid>
         </Grid>
       </div>
-    </Link>
   )
 }
 
