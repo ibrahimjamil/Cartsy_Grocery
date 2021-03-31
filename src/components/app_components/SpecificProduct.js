@@ -7,7 +7,6 @@ let image="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/0908
 
 const useStyle=makeStyles((theme)=>({
     root:{
-        height:"85vh",
         width:"100vw",
         marginTop:"1.7vh",
         paddingBottom:"80px",
