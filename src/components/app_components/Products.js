@@ -88,7 +88,7 @@ function Products(props) {
           data:{
             img:props.img,
             price:props.price,
-            description:props.desc,
+            title:props.tit,
             quantity:1
           }
         }
@@ -108,7 +108,7 @@ function Products(props) {
               <p style={{fontSize:"16px",marginBottom:"5px"}}>${props.price}</p>
             </Grid>
             <Grid item>
-              <p style={{fontSize:"16px",color:"grey",marginBottom:"25px",overflow:"hidden"}}>{props.desc}</p>
+              <p style={{fontSize: "16px",color: "grey",marginBottom: "25px",height: "40px"}}>{props.tit}</p>
             </Grid>
             <div className={classes.btnroot} onClick={()=>cartReducer()}>
               <div className={classes.btn1}>add </div>

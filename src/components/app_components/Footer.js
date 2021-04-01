@@ -8,12 +8,14 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const useStyle=makeStyles((theme)=>({
     root:{
-        padding:"15px 60px",
+        padding:"5px 40px",
         display: "flex",
         flexDirection:"row",
         justifyContent:"space-between",
         position: "relative",
         background: "white",
+        boxShadow: "0px 1px 1px 1px rgb(0 0 0 / 2%), 0px 2px 2px 0px rgb(0 0 0 / 5%), 0px 1px 10px 0px rgb(0 0 0 / 12%)",
+
     },
     info:{
         [theme.breakpoints.down('xs')]:{
@@ -34,7 +36,7 @@ function Footer() {
     const classes=useStyle()
     
     return (
-        <div >
+        <div>
             <Grid container className={classes.root} direction="row">
                 <Grid item xs={12} sm={6} className={classes.info} >
                     <p style={{color:"#212121"}}>Cartsy Grocery - All right reserved - Design & Developed by RedQ, Inc </p>

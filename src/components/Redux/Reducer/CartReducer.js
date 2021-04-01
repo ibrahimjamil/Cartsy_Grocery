@@ -2,7 +2,7 @@ const initialState=[
   {
     img:'',
     price:'',
-    description:'',
+    title:'',
     quantity:''
   }
 ]
@@ -17,7 +17,7 @@ const cartreducer = (state=initialState,action)=>{
         {
           img:action.payload.img,
           price:action.payload.price,
-          description:action.payload.description,
+          title:action.payload.title,
           quantity:1
         }
       ]
@@ -40,7 +40,7 @@ const cartreducer = (state=initialState,action)=>{
         ]
       }else{
         copystate2.map((object)=>{
-          if (object.img && object.price && object.description && object.quantity>1){
+          if (object.img && object.price && object.title && object.quantity>1){
             object.quantity=object.quantity-1
           }
         })

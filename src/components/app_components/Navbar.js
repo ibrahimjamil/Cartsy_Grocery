@@ -201,9 +201,9 @@ export default function Navbar() {
           <div className={classes.cart_upper}>
             {cartdata.map((object,index)=>(
               <div>
-                {object.img && object.price && object.description && object.quantity>=1?
+                {object.img && object.price && object.title && object.quantity>=1?
                   <div>
-                    <CartBar index={index} quan={object.quantity} img={object.img} price={object.price} description={object.description}/>
+                    <CartBar index={index} quan={object.quantity} img={object.img} price={object.price} description={object.title}/>
                     <Divider/>
                   </div>:
                   ''

@@ -44,12 +44,22 @@ function Productpage() {
             <Hidden smDown >
                 <div className={classes.root}>
                     <div className={classes.rootweb}>
-                        <Grid container justify="space-around" spacing={2}>
-                            {state.map((object,index)=>(
-                                    <Grid item  sm={3} lg={3} container justify="center" >
-                                        <Products  ind={index} img={object.img} price={object.price} desc={object.description}/>
-                                    </Grid>
-                                ))
+                        <Grid container justify="space-around" spacing={1}>
+                            {state.map((object,index)=> {
+                                return (
+                                    <>
+                                        {
+                                            object[Object.keys(object)[0]].map((product)=>{
+                                                return (
+                                                    <Grid item  sm={3} lg={3} container justify="center" >
+                                                        <Products  ind={index} img={product.img} price={product.price} tit={product.title}/>
+                                                    </Grid>  
+                                                )
+                                            })
+                                        }
+                                    </>
+                                )
+                                })
                             }
                         </Grid>
                     </div>
@@ -58,13 +68,23 @@ function Productpage() {
             <Hidden mdUp className={classes.ro}>
                 <div className={classes.rootm}>
                     <div className={classes.rootMobile}>
-                        <Grid container justify="space-between" spacing={2}>
-                            {state.map((object,index)=>(
-                                <Grid item xs={6} container justify="center">
-                                    <Products ind={index} img={object.img} price={object.price} desc={object.description}/>
-                                </Grid>
-                                ))
-                            }
+                        <Grid container justify="space-between" spacing={1}>
+                            {state.map((object,index)=>{
+                                return (
+                                    <>
+                                        {
+                                            object[Object.keys(object)[0]].map((product)=>{
+                                                return (
+                                                    <Grid item xs={12} sm={6} container justify="center">
+                                                        <Products ind={index} img={product.img} price={product.price} tit={product.title}/>
+                                                    </Grid>
+                                                )
+                                            })
+                                        }
+                                    </>
+                                )
+                                }
+                            )}
                         </Grid>
                     </div>
                 </div>
