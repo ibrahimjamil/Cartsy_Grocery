@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         width:"23vw",
         overflowY:"scroll",
         position:'fixed',
-        marginTop:"15px",
+        marginTop:"3px",
     },
     nested: {
         paddingLeft: theme.spacing(4),
@@ -60,7 +60,7 @@ function FixesSidebar() {
                       <ListItem button className={classes.nested}>
                         <ListItemText>
                           {text==="Fresh Vegetables" && ["Packaging"].map((item)=>(
-                              <p>{item}</p>
+                              <p style={{marginTop:"0px",marginBottom:"0px"}}>{item}</p>
                           ))}
                         </ListItemText>
                       </ListItem>

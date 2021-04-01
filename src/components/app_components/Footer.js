@@ -1,14 +1,19 @@
 import React from 'react'
 import {  makeStyles } from '@material-ui/core/styles';
 import { Grid, Hidden} from '@material-ui/core';
-
+import TwitterIcon from '@material-ui/icons/Twitter';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 
 const useStyle=makeStyles((theme)=>({
     root:{
         padding:"15px 60px",
         display: "flex",
         flexDirection:"row",
-        justifyContent:"space-between"
+        justifyContent:"space-between",
+        position: "relative",
+        background: "white",
     },
     info:{
         [theme.breakpoints.down('xs')]:{
@@ -27,18 +32,19 @@ const useStyle=makeStyles((theme)=>({
 }))
 function Footer() {
     const classes=useStyle()
-
+    
     return (
-        <div>
+        <div >
             <Grid container className={classes.root} direction="row">
                 <Grid item xs={12} sm={6} className={classes.info} >
-                    <p>Hello world </p>
+                    <p style={{color:"#212121"}}>Cartsy Grocery - All right reserved - Design & Developed by RedQ, Inc </p>
                 </Grid>
                 <Grid item  xs={12}  sm={6} className={classes.social} container alignItems="center" direction="row-reverse">
                     <Grid  item >
-                        <a style={{paddingLeft:"20px"}}>twitter</a>
-                        <a style={{paddingLeft:"20px"}}>facebook</a>
-                        <a style={{paddingLeft:"20px"}}>instagram</a>
+                        <a style={{paddingLeft:"20px"}}><FacebookIcon fontSize="small"/></a>
+                        <a style={{paddingLeft:"20px"}}><TwitterIcon fontSize="small"/></a>
+                        <a style={{paddingLeft:"20px"}}><InstagramIcon fontSize="small"/></a>
+                        <a style={{paddingLeft:"20px"}}><LinkedInIcon fontSize="small"/></a>
                     </Grid>
                 </Grid>
             </Grid>

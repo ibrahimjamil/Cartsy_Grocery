@@ -98,7 +98,7 @@ function Products(props) {
   return (
       <div className={classes.rootest}>
         <Grid container className={classes.root}>
-          <Link to="/products" className={classes.color}>
+          <Link to="/products" className={classes.color} onClick={()=>console.log("hello")}>
             <Grid item>
               <img src={props.img} style={{width:"100%",height:"50%",transform: "scale(0.9)"}}/>
             </Grid>
