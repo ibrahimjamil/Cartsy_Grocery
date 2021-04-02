@@ -1,0 +1,62 @@
+[
+    {
+        "name":"Fresh Vegetable",
+        "catId":"1",
+        "subCategories":
+            [
+                {
+                    "name":"Flower Vegetable",
+                    "subId":"1A"
+                },
+                {
+                    "name":"Leaf Vegetable",
+                    "subId":"1B"
+                }
+            ]      
+    },
+    {
+        "name":"Fresh Fruits",
+        "catId":"2",
+        "subCategories":
+            [
+                {
+                    "name":"Berries",
+                    "subId":"2A"
+                },
+                {
+                    "name":"Citrus Fruits",
+                    "subId":"2B"
+                }
+            ]      
+    },
+    {
+        "name":"dairy and eggs",
+        "catId":"3",
+        "subCategories":
+            [
+                {
+                    "name":"Eggs",
+                    "subIid":"3A"
+                },
+                {
+                    "name":"Butter",
+                    "subId":"3B"
+                }
+            ]      
+    },
+    {
+        "name":"Frozen",
+        "catId":"4",
+        "subCategories":
+            [
+                {
+                    "name":"Cutted Fish",
+                    "subIid":"4A"
+                },
+                {
+                    "name":"Cutted meat",
+                    "subId":"4B"
+                }
+            ]      
+    }
+]

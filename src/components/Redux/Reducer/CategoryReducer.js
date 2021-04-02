@@ -1,7 +1,7 @@
-import data from '../Products'
+import data from '../Category'
 const initialState=data
 
-const datareducer = (state=initialState,action)=>{
+const CategoryReducer = (state=initialState,action)=>{
   switch(action.type){
     case "Fetched":
       return [
@@ -13,4 +13,4 @@ const datareducer = (state=initialState,action)=>{
 }
 
 
-export default datareducer
+export default CategoryReducer
