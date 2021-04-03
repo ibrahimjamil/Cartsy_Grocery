@@ -6,8 +6,11 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Collapse from '@material-ui/core/Collapse';
 import { Hidden } from '@material-ui/core';
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import {BrowserRouter as Router,Switch,Route,Link} from "react-router-dom";
+import {ProductbyCategory,ProductbySubCategory} from '../Redux/Action/CategoryActions'
+
 const useStyles = makeStyles((theme) => ({
     //custom scroll bar 
   '@global': {
@@ -41,11 +44,14 @@ function FixesSidebar() {
     const [selectedIndex,setSelectedIndex]=useState("")
     const classes = useStyles();
     const categories=useSelector(state=>state.CategoryReducer)
+    const dispatch = useDispatch()
     const handleClick = (index,catId)=> {
         if (selectedIndex === index) {
           setSelectedIndex("")
+          dispatch({type:"FetchedAllAgain"})
         } else {
           setSelectedIndex(index)
+          dispatch(ProductbyCategory(catId))
         }
     }
     return (
@@ -57,22 +63,28 @@ function FixesSidebar() {
                     <div>
                       {
                         <div className={classes.root}>
-                            <ListItem>
-                              <ListItemText  onClick={()=>handleClick(index,category.catId)} primary={category.name} style={{cursor:"pointer",display:"flex",justifyContent:"flex-start"}}/>
-                              {index===selectedIndex ? <ExpandMore /> : <NavigateNextIcon/>}
-                            </ListItem>
+                            <Link style={{ textDecoration: 'none',color:"black" }} to={{pathname:'/',ownProps:{Cid:category.catId}}}>
+                              <ListItem>
+                                <ListItemText  onClick={()=>handleClick(index,category.catId)} primary={category.name} style={{cursor:"pointer",display:"flex",justifyContent:"flex-start"}}/>
+                                {index===selectedIndex ? <ExpandMore /> : <NavigateNextIcon/>}
+                              </ListItem>
+                            </Link>
                             <Collapse in={index===selectedIndex}>
                               <List >
                                   {
-                                    category.subCategories.map((subcategoryItem,index)=>{
+                                    category.subCategories.map((subcategoryItem)=>{
                                       return (
-                                        <>
+                                        <div>
                                           <ListItem button className={classes.nested}>
                                             <ListItemText>   
-                                                  <p style={{marginTop:"0px",marginBottom:"0px"}} >{subcategoryItem.name}</p>
+                                                  <p 
+                                                    style={{marginTop:"0px",marginBottom:"0px"}} 
+                                                    onClick={()=>dispatch(ProductbySubCategory(category.catId,subcategoryItem.subId))} >
+                                                    {subcategoryItem.name}
+                                                  </p>
                                             </ListItemText>
                                           </ListItem>
-                                        </>
+                                        </div>
                                       )
                                     })
                                   }

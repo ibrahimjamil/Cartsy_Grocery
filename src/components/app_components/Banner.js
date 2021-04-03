@@ -1,7 +1,9 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {  makeStyles } from '@material-ui/core/styles';
 import { Grid, Hidden } from '@material-ui/core';
-
+import {useSelector,useDispatch} from 'react-redux'
+import {useLocation} from 'react-router-dom'
+import {ProductbyCategory, ProductByCategory} from '../Redux/Action/CategoryActions'
 const useStyles = makeStyles((theme) => ({
   root:{
     width:"76.9vw",
@@ -58,7 +60,20 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 function Banner() {
+  const data=useLocation()
   const classes=useStyles()
+  const [text,setText]=useState('')
+  const dispatch=useDispatch()
+  const products = useSelector(state => state.dataReducer)
+
+  const handleChange=(e)=>{
+    setText(e.target.value)
+    if (e.target.value===''){
+      dispatch(ProductbyCategory(data.ownProps.Cid))
+    }else{
+      dispatch({type:"searchFetched",payload:{data:e.target.value,Cid:data.ownProps.Cid}})
+    }
+  }
   return (
       <div>
         <Hidden smDown>
@@ -66,7 +81,7 @@ function Banner() {
             <Grid  container className={classes.root_web}>
               <h2 style={{fontSize:"36px",marginBottom:"15px"}}>Products Delivered in 90 Minutes</h2>
               <p style={{fontSize:"16px",color:"SASASA",marginTop:"0px"}}>Get your products delivered at your doorsteps all day everyday</p>
-              <input className={classes.input_style}  placeholder="E,g Meat,Yogurt,Eggs etc"></input>
+              <input className={classes.input_style}  placeholder="E,g Meat,Yogurt,Eggs etc" value={text} onChange={handleChange}/>
             </Grid>
           </div>
         </Hidden>

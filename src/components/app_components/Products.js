@@ -5,7 +5,6 @@ import { Grid } from '@material-ui/core';
 import Navbar from './Navbar';
 import {useSelector,useDispatch} from 'react-redux'
 
-
 const useStyles = makeStyles((theme) => ({
   rootest:{
     cursor:"pointer",
@@ -98,7 +97,7 @@ function Products(props) {
   return (
       <div className={classes.rootest}>
         <Grid container className={classes.root}>
-          <Link to="/products" className={classes.color} onClick={()=>console.log("hello")}>
+          <Link to={{pathname:"/products", ownprops:{Pid:props.id,CId:props.Cid}}} className={classes.color}>
             <Grid item>
               <img src={props.img} style={{width:"100%",height:"50%",transform: "scale(0.9)"}}/>
             </Grid>

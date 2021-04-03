@@ -1,6 +1,7 @@
 import { put, takeEvery,all } from 'redux-saga/effects'
 import {dataFetched} from '../Action/DataAction'
 import {cartFetched,cartIncrement,cartDecrement} from '../Action/CartAction'
+import { yellow } from '@material-ui/core/colors'
 
 function* getData(){
   let dataActionFetched=dataFetched()
@@ -34,11 +35,29 @@ function* cartQuantityD(){
   yield takeEvery("decrement_quantity",decrementQ)
 }
 
+function* categoryproducts({payload}){
+  yield put({type:"Get_Product_By_Category",payload:payload})
+}
+
+function* ProductFilter(){
+  yield takeEvery("CategoryProduct",categoryproducts)
+}
+
+function* subcategoryproducts({payload}){
+  yield put({type:"Get_Product_By_Category_and_subCategory",payload:payload})
+}
+
+function* ProductFilterbysub(){
+  yield takeEvery("CategoryProductBySubCategory",subcategoryproducts)
+}
+
 export default function* rootSaga(){
   yield all([
     getDataWatch(),
     cartAddWatch(),
     cartQuantityI(),
-    cartQuantityD()
+    cartQuantityD(),
+    ProductFilter(),
+    ProductFilterbysub()
   ])
 }

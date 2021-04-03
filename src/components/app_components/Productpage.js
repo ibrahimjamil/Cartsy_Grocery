@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
         width:"76.96vw",
         backgroundColor:"whitesmoke",
         marginLeft:"23vw",
+        marginTop: "-40px"
     },
     rootweb:{
         width:"100%",
@@ -34,10 +35,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 function Productpage() {
     const classes=useStyles()
-    const state = useSelector(state => state.dataReducer)
+    const ProductsData = useSelector(state => state.dataReducer)
     const dispatch=useDispatch()
     useEffect(()=>{
-        dispatch({type:"getData"})
+        dispatch({type:"FetchedAllAgain"})
     },[])
     return (
         <div>
@@ -45,19 +46,11 @@ function Productpage() {
                 <div className={classes.root}>
                     <div className={classes.rootweb}>
                         <Grid container justify="space-around" spacing={1}>
-                            {state.map((object,index)=> {
+                            {ProductsData.map((product)=> {
                                 return (
-                                    <>
-                                        {
-                                            object[Object.keys(object)[0]].map((product)=>{
-                                                return (
-                                                    <Grid item  sm={3} lg={3} container justify="center" >
-                                                        <Products  ind={index} img={product.img} price={product.price} tit={product.title}/>
-                                                    </Grid>  
-                                                )
-                                            })
-                                        }
-                                    </>
+                                    <Grid item  sm={3} lg={3} container justify="center" >
+                                        <Products  Cid={product.categoriesId} id={product.id} img={product.img} price={product.price} tit={product.title}/>
+                                    </Grid>
                                 )
                                 })
                             }
@@ -69,20 +62,12 @@ function Productpage() {
                 <div className={classes.rootm}>
                     <div className={classes.rootMobile}>
                         <Grid container justify="space-between" spacing={1}>
-                            {state.map((object,index)=>{
-                                return (
-                                    <>
-                                        {
-                                            object[Object.keys(object)[0]].map((product)=>{
-                                                return (
-                                                    <Grid item xs={12} sm={6} container justify="center">
-                                                        <Products ind={index} img={product.img} price={product.price} tit={product.title}/>
-                                                    </Grid>
-                                                )
-                                            })
-                                        }
-                                    </>
-                                )
+                            {ProductsData.map((product)=>{
+                                    return (
+                                        <Grid item xs={12} sm={6} container justify="center">
+                                            <Products  Cid={product.categoriesId} id={product.id} img={product.img} price={product.price} tit={product.title}/>
+                                        </Grid>
+                                    )
                                 }
                             )}
                         </Grid>

@@ -130,11 +130,9 @@ export default function Navbar() {
   let totalAmount=0
   const classes = useStyles();
   const cartdata=useSelector(state=>state.cartReducer)
-  const dispatch=useDispatch()
-
   
   cartdata.map((object)=>{
-    if (object.img&&object.price&&object.description&&object.quantity){
+    if (object.img&&object.price&&object.quantity&&object.title){
         totalAmount=totalAmount + (object.price*object.quantity)
     }
   })
