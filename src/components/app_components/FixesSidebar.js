@@ -49,10 +49,16 @@ function FixesSidebar() {
         if (selectedIndex === index) {
           setSelectedIndex("")
           dispatch({type:"FetchedAllAgain"})
+          dispatch({type:"SearchAll",payload:{Cid:0}})
         } else {
           setSelectedIndex(index)
           dispatch(ProductbyCategory(catId))
+          dispatch({type:"SearchFromCategory",payload:{Cid:catId}})
         }
+    }
+    const handleSubClick=(cid,subId)=>{
+      dispatch(ProductbySubCategory(cid,subId))
+      dispatch({type:"SearchFromSubCategory",payload:{Cid:cid,SubId:subId}})
     }
     return (
       <Hidden smDown implementation="css">
@@ -77,7 +83,7 @@ function FixesSidebar() {
                                             <ListItemText>   
                                                   <p 
                                                     style={{marginTop:"0px",marginBottom:"0px"}} 
-                                                    onClick={()=>dispatch(ProductbySubCategory(category.catId,subcategoryItem.subId))} >
+                                                    onClick={()=>handleSubClick(category.catId,subcategoryItem.subId)} >
                                                     {subcategoryItem.name}
                                                   </p>
                                             </ListItemText>

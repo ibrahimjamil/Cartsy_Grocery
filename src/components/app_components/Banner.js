@@ -3,7 +3,9 @@ import {  makeStyles } from '@material-ui/core/styles';
 import { Grid, Hidden } from '@material-ui/core';
 import {useSelector,useDispatch} from 'react-redux'
 import {useLocation} from 'react-router-dom'
-import {ProductbyCategory} from '../Redux/Action/CategoryActions'
+import {ProductbyCategory,ProductbySubCategory} from '../Redux/Action/CategoryActions'
+import searchReducer from '../Redux/Reducer/SearchReducer'
+
 const useStyles = makeStyles((theme) => ({
   root:{
     width:"76.9vw",
@@ -63,11 +65,30 @@ function Banner() {
   const data=useLocation()
   const classes=useStyles()
   const [text,setText]=useState('')
-  const dispatch=useDispatch()
+  const searchRed=useSelector(state=>state.SearchReducer)
   const products = useSelector(state => state.dataReducer)
+  const dispatch=useDispatch()
 
   const handleChange=(e)=>{
     setText(e.target.value)
+    if (searchRed.catId===0 && searchRed.subId===0 && e.target.value===''){
+      dispatch({type:"FetchedAllAgain"})
+    }
+    else if (searchRed.catId===0 && searchRed.subId===0 && e.target.value!==''){
+      dispatch({type:"SearchAll",payload:{search:e.target.value}})
+    }
+    else if (searchRed.catId>0 && searchRed.subId===0 && e.target.value!==''){
+      dispatch({type:"SearchByCategory",payload:{CatID:searchRed.catId,search:e.target.value}})
+    }
+    else if (searchRed.catId>0 && searchRed.subId===0 && e.target.value===''){
+      dispatch(ProductbyCategory(searchRed.catId))
+    }
+    else if (searchRed.catId>0 && searchRed.subId!==0 && e.target.value!==''){
+      dispatch({type:"SearchByCategoryAndSub",payload:{CatID:searchRed.catId,SubID:searchRed.subId,search:e.target.value}})
+    }
+    else if (searchRed.catId>0 && searchRed.subId!==0 && e.target.value===''){
+      dispatch(ProductbySubCategory(searchRed.catId,searchRed.subId))
+    }
   }
   return (
       <div>
