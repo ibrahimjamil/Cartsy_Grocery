@@ -63,14 +63,12 @@ function FixesSidebar() {
                     <div>
                       {
                         <div className={classes.root}>
-                            <Link style={{ textDecoration: 'none',color:"black" }} to={{pathname:'/',ownProps:{Cid:category.catId}}}>
-                              <ListItem>
-                                <ListItemText  onClick={()=>handleClick(index,category.catId)} primary={category.name} style={{cursor:"pointer",display:"flex",justifyContent:"flex-start"}}/>
-                                {index===selectedIndex ? <ExpandMore /> : <NavigateNextIcon/>}
-                              </ListItem>
-                            </Link>
+                            <ListItem>
+                              <ListItemText  onClick={()=>handleClick(index,category.catId)} primary={category.name} style={{cursor:"pointer",display:"flex",justifyContent:"flex-start"}}/>
+                              {index===selectedIndex ? <ExpandMore /> : <NavigateNextIcon/>}
+                            </ListItem>
                             <Collapse in={index===selectedIndex}>
-                              <List >
+                              <List>
                                   {
                                     category.subCategories.map((subcategoryItem)=>{
                                       return (

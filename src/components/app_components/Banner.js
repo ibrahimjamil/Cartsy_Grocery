@@ -3,7 +3,7 @@ import {  makeStyles } from '@material-ui/core/styles';
 import { Grid, Hidden } from '@material-ui/core';
 import {useSelector,useDispatch} from 'react-redux'
 import {useLocation} from 'react-router-dom'
-import {ProductbyCategory, ProductByCategory} from '../Redux/Action/CategoryActions'
+import {ProductbyCategory} from '../Redux/Action/CategoryActions'
 const useStyles = makeStyles((theme) => ({
   root:{
     width:"76.9vw",
@@ -68,11 +68,6 @@ function Banner() {
 
   const handleChange=(e)=>{
     setText(e.target.value)
-    if (e.target.value===''){
-      dispatch(ProductbyCategory(data.ownProps.Cid))
-    }else{
-      dispatch({type:"searchFetched",payload:{data:e.target.value,Cid:data.ownProps.Cid}})
-    }
   }
   return (
       <div>
