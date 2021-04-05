@@ -45,6 +45,7 @@ function FixesSidebar() {
     const classes = useStyles();
     const categories=useSelector(state=>state.CategoryReducer)
     const dispatch = useDispatch()
+    console.log("hello")
     const handleClick = (index,catId)=> {
         if (selectedIndex === index) {
           setSelectedIndex("")
