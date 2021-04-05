@@ -41,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function FixesSidebar() {
-  console.log("hi")
     const [selectedIndex,setSelectedIndex]=useState("")
     const classes = useStyles();
     const categories=useSelector(state=>state.CategoryReducer)
