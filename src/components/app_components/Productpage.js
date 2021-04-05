@@ -12,7 +12,20 @@ const useStyles = makeStyles((theme) => ({
         width:"76.96vw",
         backgroundColor:"whitesmoke",
         marginLeft:"23vw",
-        marginTop: "-40px"
+        marginTop: "-40px",
+    },
+    root1:{
+        width:"76.96vw",
+        backgroundColor:"whitesmoke",
+        marginLeft:"23vw",
+        marginTop: "-40px",
+        height:"35vh"
+    },
+    root2:{
+        width:"100vw",
+        backgroundColor:"whitesmoke",
+        marginTop: "-40px",
+        height:"35vh"
     },
     rootweb:{
         width:"100%",
@@ -43,6 +56,11 @@ function Productpage() {
     return (
         <div>
             <Hidden smDown >
+                {ProductsData.length===0 ?
+                    <div className={classes.root1}>
+
+                     </div>:''
+                }
                 <div className={classes.root}>
                     <div className={classes.rootweb}>
                         <Grid container justify="flex-stater" spacing={1}>
@@ -59,6 +77,11 @@ function Productpage() {
                 </div>
             </Hidden>
             <Hidden mdUp className={classes.ro}>
+                {ProductsData.length===0 ?
+                    <div className={classes.root2}>
+
+                    </div>:''
+                }
                 <div className={classes.rootm}>
                     <div className={classes.rootMobile}>
                         <Grid container justify="space-between" spacing={1}>
