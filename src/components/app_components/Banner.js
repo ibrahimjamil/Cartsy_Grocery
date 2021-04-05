@@ -5,6 +5,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import {useLocation} from 'react-router-dom'
 import {ProductbyCategory,ProductbySubCategory} from '../Redux/Action/CategoryActions'
 import searchReducer from '../Redux/Reducer/SearchReducer'
+import checkingIdsforDipatch from './CheckingIDS'
 
 const useStyles = makeStyles((theme) => ({
   root:{
@@ -71,24 +72,8 @@ function Banner() {
 
   const handleChange=(e)=>{
     setText(e.target.value)
-    if (searchRed.catId===0 && searchRed.subId===0 && e.target.value===''){
-      dispatch({type:"FetchedAllAgain"})
-    }
-    else if (searchRed.catId===0 && searchRed.subId===0 && e.target.value!==''){
-      dispatch({type:"SearchAll",payload:{search:e.target.value}})
-    }
-    else if (searchRed.catId>0 && searchRed.subId===0 && e.target.value!==''){
-      dispatch({type:"SearchByCategory",payload:{CatID:searchRed.catId,search:e.target.value}})
-    }
-    else if (searchRed.catId>0 && searchRed.subId===0 && e.target.value===''){
-      dispatch(ProductbyCategory(searchRed.catId))
-    }
-    else if (searchRed.catId>0 && searchRed.subId!==0 && e.target.value!==''){
-      dispatch({type:"SearchByCategoryAndSub",payload:{CatID:searchRed.catId,SubID:searchRed.subId,search:e.target.value}})
-    }
-    else if (searchRed.catId>0 && searchRed.subId!==0 && e.target.value===''){
-      dispatch(ProductbySubCategory(searchRed.catId,searchRed.subId))
-    }
+    let result=checkingIdsforDipatch(searchRed.catId,searchRed.subId,e.target.value)
+    dispatch(result)
   }
   return (
       <div>

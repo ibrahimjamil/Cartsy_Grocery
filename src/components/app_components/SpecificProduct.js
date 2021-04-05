@@ -250,7 +250,7 @@ function SpecificProduct() {
                     <Grid item>
                         <h2 style={{fontSize:"24px",fontWeight:"500"}}>You may also like...</h2>
                     </Grid>
-                    <Grid item container justify="space-around" spacing={2}>
+                    <Grid item container justify="flex-start" spacing={2}>
                     {Products.map((product,index)=>{
                         return (
                             <Grid item sm={6} md={4} lg={3} container justify="center">

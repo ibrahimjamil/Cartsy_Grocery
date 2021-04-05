@@ -29,10 +29,8 @@ const datareducer = (state=initialState,action)=>{
     case "FetchedAllAgain":
       return initialState
     case "Get_Product_By_Category":
-        let globalState=initialState
-        return produce(globalState,newState=>{
-          return newState.filter(product=>product.categoriesId===action.payload.CategoryID)
-        })
+      console.log("in data reducer filtering done and data dispached")
+       return action.payload
     case "CategoryProductBySubCategory":
       let globalState4=initialState
       let res=produce(globalState4,newState=>{

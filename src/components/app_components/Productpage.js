@@ -45,7 +45,7 @@ function Productpage() {
             <Hidden smDown >
                 <div className={classes.root}>
                     <div className={classes.rootweb}>
-                        <Grid container justify="space-around" spacing={1}>
+                        <Grid container justify="flex-stater" spacing={1}>
                             {ProductsData.map((product)=> {
                                 return (
                                     <Grid item  sm={3} lg={3} container justify="center" >

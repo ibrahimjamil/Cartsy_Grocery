@@ -1,7 +1,7 @@
 
 const initialState={
-  catId:0,
-  subId:0,
+  catId:null,
+  subId:null,
 }
 
 const searchReducer=(state=initialState,action)=>{
@@ -11,7 +11,7 @@ const searchReducer=(state=initialState,action)=>{
     case "SearchFromCategory":
       return {
         catId:action.payload.Cid,
-        subId:0
+        subId:null
       }
     case "SearchFromSubCategory":
       return{
