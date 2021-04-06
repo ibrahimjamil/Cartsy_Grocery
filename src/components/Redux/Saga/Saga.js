@@ -1,4 +1,4 @@
-import { put, takeEvery,all,select } from 'redux-saga/effects'
+import { put, takeEvery,all,select,call,take,cancel,fork,join, delay } from 'redux-saga/effects'
 import {dataFetched} from '../Action/DataAction'
 import {cartFetched,cartIncrement,cartDecrement} from '../Action/CartAction'
 import {produce} from "immer"
@@ -56,14 +56,31 @@ function* ProductFilterbysub(){
   yield takeEvery("CategoryProductBySubCategory",subcategoryproducts)
 }
 
+
+function* authorize(user, password) {
+  return yield {info:"hello "+user+" "+password}
+}
+
+function* SagaTesting(){
+  while (true) {
+    const {payload} = yield take ("DATA")
+    const task = yield fork(authorize, payload.user, payload.password)
+    const res = yield join(task)
+    setTimeout (()=>{
+      console.log("hello")
+    },2000)
+    console.log(res)
+  }
+}
+
 export default function* RootSaga() {
-  const state=yield select(state => state.dataReducer)
   yield all([
     getDataWatch(),
     cartAddWatch(),
     cartQuantityI(),
     cartQuantityD(),
     ProductFilter(),
-    ProductFilterbysub()
+    ProductFilterbysub(),
+    SagaTesting()
   ])
 }

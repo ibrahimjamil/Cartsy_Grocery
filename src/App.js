@@ -11,6 +11,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import combineReducer from './components/Redux/Combinereducer/CombineReducer.js'
 import SpecificProduct from './components/app_components/SpecificProduct'
 import Footer from './components/app_components/Footer'
+import SagaTesting from "./components/app_components/SagaTesting";
 
 const sagamiddlware=createSagaMiddleware()
 const store=createStore(combineReducer,composeWithDevTools(applyMiddleware(sagamiddlware)))
@@ -20,6 +21,7 @@ function App() {
   return (
     <Provider store={store}>
       <div>
+          <SagaTesting/>
           <Router>
             <div style={{display: 'flex',flexDirection: 'column'}}>
               <Navbar/>

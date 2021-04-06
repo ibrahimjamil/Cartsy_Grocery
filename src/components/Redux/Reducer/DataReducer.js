@@ -9,14 +9,14 @@ const datareducer = (state=initialState,action)=>{
       return state
     case "SearchAll":
       return produce(initialState,newState=>{
-        return newState.filter(product=>product.title.toLowerCase().search(action.payload.search.toLowerCase())>=0)
+        return newState.filter(product=>product.title.search(action.payload.search)>=0)
       })
     case "SearchByCategory":
       let filterData=produce(initialState,newState=>{
         return newState.filter(product=>product.categoriesId===action.payload.CatID)
       })
       let res1 =produce(filterData,searchFilter=>{
-        return searchFilter.filter(product=>product.title.toLowerCase().search(action.payload.search.toLowerCase())>=0)
+        return searchFilter.filter(product=>product.title.search(action.payload.search)>=0)
       })
       return res1
     case "SearchByCategoryAndSub":
@@ -24,7 +24,7 @@ const datareducer = (state=initialState,action)=>{
         return newState.filter(product=>product.categoriesId===action.payload.CatID && product.subCategoriesid===action.payload.SubID)
       })
       return produce(filterData1,searchFilter=>{
-        return searchFilter.filter(product=>product.title.toLowerCase().search(action.payload.search.toLowerCase())>=0)
+        return searchFilter.filter(product=>product.title.search(action.payload.search)>=0)
       })
     case "FetchedAllAgain":
       return initialState
