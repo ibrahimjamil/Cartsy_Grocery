@@ -1,8 +1,9 @@
-import { put, takeEvery,all,select,call,take,cancel,fork,join, delay } from 'redux-saga/effects'
+import { put, takeEvery,all,take,fork, delay,actionChannel } from 'redux-saga/effects'
 import {dataFetched} from '../Action/DataAction'
 import {cartFetched,cartIncrement,cartDecrement} from '../Action/CartAction'
 import {produce} from "immer"
 import initialData from '../Products'
+import { buffers } from 'redux-saga'
 
 function* getData(){
   let dataActionFetched=dataFetched()
@@ -58,18 +59,15 @@ function* ProductFilterbysub(){
 
 
 function* authorize(user, password) {
-  return yield {info:"hello "+user+" "+password}
+   yield console.log({info:"hello "+user+" "+password})
 }
 
 function* SagaTesting(){
+  const requestChan = yield actionChannel('DATA')
   while (true) {
-    const {payload} = yield take ("DATA")
-    const task = yield fork(authorize, payload.user, payload.password)
-    const res = yield join(task)
-    setTimeout (()=>{
-      console.log("hello")
-    },2000)
-    console.log(res)
+    const {payload} = yield take (requestChan)
+    yield delay(2000)
+    yield fork(authorize, payload.user, payload.password)
   }
 }
 

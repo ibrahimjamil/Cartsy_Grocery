@@ -91,7 +91,7 @@ function Banner() {
               <Grid  container className={classes.root_mobile}>
                 <h2 style={{marginBottom:"15px"}}>Products Delivered in 90 Minutes</h2>
                 <p style={{color:"SASASA",marginTop:"0px",maxWidth:"70%"}}>Get your products delivered at your doorsteps all day everyday</p>
-                <input className={classes.input_style} placeholder="E,g Meat,Yogurt,Eggs etc"></input>
+                <input className={classes.input_style} placeholder="E,g Meat,Yogurt,Eggs etc" value={text} onChange={handleChange}></input>
               </Grid>
             </div>
         </Hidden>
