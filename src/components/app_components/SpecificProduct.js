@@ -163,6 +163,9 @@ function SpecificProduct() {
         setDesc(true)
         setReview(false)
     }
+     useEffect(()=>{
+        document.documentElement.scrollTop = 0;
+    })
     useEffect(()=>{
         const selectedproduct=()=>{
             Products.map((product)=>{
