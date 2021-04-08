@@ -12,6 +12,7 @@ import combineReducer from './components/Redux/Combinereducer/CombineReducer.js'
 import SpecificProduct from './components/app_components/SpecificProduct'
 import Footer from './components/app_components/Footer'
 import SagaTesting from "./components/app_components/SagaTesting";
+import Account from './components/app_components/Account'
 
 const sagamiddlware=createSagaMiddleware()
 const store=createStore(combineReducer,composeWithDevTools(applyMiddleware(sagamiddlware)))
@@ -37,6 +38,9 @@ function App() {
                     </Route>
                     <Route path="/products">
                         <SpecificProduct/>
+                    </Route>
+                    <Route path="/account" exact>
+                      <Account/>
                     </Route>
                 </Switch>
             </div>

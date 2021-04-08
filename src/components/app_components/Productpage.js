@@ -3,6 +3,7 @@ import {  makeStyles } from '@material-ui/core/styles';
 import { Grid, Hidden} from '@material-ui/core';
 import Products from './Products';
 import {useSelector,useDispatch} from 'react-redux';
+import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
         width:"76.96vw",
         backgroundColor:"whitesmoke",
         marginLeft:"23vw",
-        marginTop: "-40px",
+        marginTop: "-14px",
     },
     root1:{
         width:"76.96vw",
@@ -35,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
     rootm:{
         display:"flex",
         justifyContent:"center",
-        backgroundColor:"whitesmoke"
+        backgroundColor:"whitesmoke",
+        marginTop: "-40px",
     },
     rootMobile:{
         width:"90%",
@@ -44,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
     ro:{
         backgroundColor:"whitesmoke"
 
+    },
+    trans:{
+         transform: "translateY(-10px)"
     }
 }))
 function Productpage() {
@@ -63,10 +68,10 @@ function Productpage() {
                 }
                 <div className={classes.root}>
                     <div className={classes.rootweb}>
-                        <Grid container justify="flex-stater" spacing={1}>
+                        <Grid container justify="flex-start"  spacing={1}>
                             {ProductsData.map((product)=> {
                                 return (
-                                    <Grid item  sm={3} lg={3} container justify="center" >
+                                    <Grid item  sm={3} lg={3} container justify="center" className={classes.trans} >
                                         <Products  Cid={product.categoriesId} id={product.id} img={product.img} price={product.price} tit={product.title}/>
                                     </Grid>
                                 )
@@ -84,7 +89,7 @@ function Productpage() {
                 }
                 <div className={classes.rootm}>
                     <div className={classes.rootMobile}>
-                        <Grid container justify="space-between" spacing={1}>
+                        <Grid container justify="flex-start"  spacing={1}>
                             {ProductsData.map((product)=>{
                                     return (
                                         <Grid item xs={12} sm={6} container justify="center">

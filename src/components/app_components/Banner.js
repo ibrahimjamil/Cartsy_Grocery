@@ -7,12 +7,13 @@ import {ProductbyCategory,ProductbySubCategory} from '../Redux/Action/CategoryAc
 import searchReducer from '../Redux/Reducer/SearchReducer'
 import checkingIdsforDipatch from './CheckingIDS'
 
+//margin left auto its very important
 const useStyles = makeStyles((theme) => ({
   root:{
     width:"76.9vw",
-    height:"388px",
+    height:"345px",
     backgroundColor:"whitesmoke",
-    marginLeft:"23vw",
+    marginLeft:"auto",
   },
   rootmobile:{
     width:"100vw",
@@ -21,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
   root_web:{
     width:"76.9vw",
-    height:"380px",
+    height:"345px",
     backgroundColor:"white",
     backgroundImage:`url(https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2021/02/14092249/Grocery.png)`,
     backgroundSize: "100% 100%",
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   root_mobile:{
     width:"100vw",
-    height:"380px",
+    height:"345px",
     backgroundColor:"white",
     backgroundImage:`url(https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2021/02/14092249/Grocery.png)`,
     backgroundSize:"100% 100%",
@@ -80,18 +81,22 @@ function Banner() {
         <Hidden smDown>
           <div className={classes.root}>
             <Grid  container className={classes.root_web}>
-              <h2 style={{fontSize:"36px",marginBottom:"15px"}}>Products Delivered in 90 Minutes</h2>
+              <h2 style={{fontSize:"36px",marginBottom:"15px",textAlign:"center"}}>Products Delivered in 90 Minutes</h2>
               <p style={{fontSize:"16px",color:"SASASA",marginTop:"0px"}}>Get your products delivered at your doorsteps all day everyday</p>
-              <input className={classes.input_style}  placeholder="E,g Meat,Yogurt,Eggs etc" value={text} onChange={handleChange}/>
+              <Hidden smDown>
+                <input className={classes.input_style}  placeholder="E,g Meat,Yogurt,Eggs etc" value={text} onChange={handleChange}/>
+              </Hidden>
             </Grid>
           </div>
         </Hidden>
         <Hidden mdUp>
             <div className={classes.rootmobile}>
               <Grid  container className={classes.root_mobile}>
-                <h2 style={{marginBottom:"15px"}}>Products Delivered in 90 Minutes</h2>
+                <h2 style={{marginBottom:"15px",textAlign:"center"}}>Products Delivered in 90 Minutes</h2>
                 <p style={{color:"SASASA",marginTop:"0px",maxWidth:"70%"}}>Get your products delivered at your doorsteps all day everyday</p>
-                <input className={classes.input_style} placeholder="E,g Meat,Yogurt,Eggs etc" value={text} onChange={handleChange}></input>
+                <Hidden smDown>
+                  <input className={classes.input_style} placeholder="E,g Meat,Yogurt,Eggs etc" value={text} onChange={handleChange}></input>
+                </Hidden>
               </Grid>
             </div>
         </Hidden>

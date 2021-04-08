@@ -63,6 +63,7 @@ function FixesSidebar() {
     return (
       <Hidden smDown implementation="css">
           <div  className={classes.sidebar_container}>
+            <List>
               {
                 categories.map((category, index) =>{
                   return (
@@ -70,7 +71,12 @@ function FixesSidebar() {
                       {
                         <div className={classes.root}>
                             <ListItem>
-                              <ListItemText  onClick={()=>handleClick(index,category.catId)} primary={category.name} style={{cursor:"pointer",display:"flex",justifyContent:"flex-start"}}/>
+                              <ListItemText  onClick={()=>handleClick(index,category.catId)}  style={{cursor:"pointer",display:"flex",justifyContent:"flex-start"}}>
+                                <div style={{display:"flex",flexDirection:"row"}}>
+                                  <img src={category.svg}></img>
+                                  <h4 style={{paddingLeft:"10px",marginBottom:"0px",marginTop:"0px",color:"#212121"}}>{category.name}</h4>
+                                </div>
+                              </ListItemText>
                               {index===selectedIndex ? <ExpandMore /> : <NavigateNextIcon/>}
                             </ListItem>
                             <Collapse in={index===selectedIndex}>
@@ -82,7 +88,7 @@ function FixesSidebar() {
                                           <ListItem button className={classes.nested}>
                                             <ListItemText>   
                                                   <p 
-                                                    style={{marginTop:"0px",marginBottom:"0px"}} 
+                                                    style={{marginTop:"0px",marginBottom:"0px",marginLeft:"20px"}} 
                                                     onClick={()=>handleSubClick(category.catId,subcategoryItem.subId)} >
                                                     {subcategoryItem.name}
                                                   </p>
@@ -100,6 +106,7 @@ function FixesSidebar() {
                   ) 
                 })
               }  
+              </List>
           </div>
       </Hidden>
     )

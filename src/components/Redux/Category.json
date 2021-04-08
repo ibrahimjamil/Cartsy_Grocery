@@ -2,6 +2,7 @@
     {
         "name":"Fresh Vegetable",
         "catId":"1",
+        "svg":"https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124731/Fresh-Vegetables.svg",
         "subCategories":
             [
                 {
@@ -17,6 +18,7 @@
     {
         "name":"Fresh Fruits",
         "catId":"2",
+        "svg":"https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124731/Fresh-Vegetables.svg",
         "subCategories":
             [
                 {
@@ -32,6 +34,7 @@
     {
         "name":"dairy and eggs",
         "catId":"3",
+        "svg":"https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124730/Bakery.svg",
         "subCategories":
             [
                 {
@@ -47,6 +50,7 @@
     {
         "name":"Frozen",
         "catId":"4",
+        "svg":"https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124730/Bakery.svg",
         "subCategories":
             [
                 {
